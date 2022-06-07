@@ -1,21 +1,17 @@
 package com.ddd.bug.BugStory.project.domain.model;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
-import java.util.List;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
+@Builder
 public class Backlog {
+    @Getter
     private int Id;
 
-    @NonNull
-    private int ProjectId;
+    @Getter
+    private int projectId;
 
     @Getter
-    private List<Issue> issues;
+    private String description;
 }

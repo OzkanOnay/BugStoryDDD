@@ -10,8 +10,10 @@ import lombok.RequiredArgsConstructor;
 @EqualsAndHashCode
 public class Comment {
     private int Id;
+
     @NonNull
-    private int IssueId;
+    private int issueId;
+
     @NonNull
     private String comment;
 

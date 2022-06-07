@@ -7,21 +7,21 @@ import lombok.*;
 
 import java.util.List;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
 @EqualsAndHashCode
+@Builder
 public class Issue {
+    @Getter
     private int Id;
 
-    @NonNull
+    @Getter
     private String description;
 
-    @NonNull
+    @Getter
     private IssueType type;
 
     private IssuePriorities priority;
 
-    @NonNull
+    @Getter
     private IssueStatu issueStatu;
 
     @Getter
@@ -29,4 +29,11 @@ public class Issue {
 
     @Getter
     private List<Comment> comments;
+
+    public void addComment(Comment comment) {
+        //validation
+
+        comments.add(comment);
+    }
+
 }

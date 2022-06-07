@@ -1,23 +1,27 @@
 package com.ddd.bug.BugStory.project.domain.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@NoArgsConstructor
-@RequiredArgsConstructor
 @EqualsAndHashCode
+@Builder
 public class Project {
+    @Getter
     private int Id;
-    @NonNull
+
+    @Getter
     private String projectName;
-    @NonNull
+
+    @Getter
     private String description;
-    @NonNull
+
+    @Getter
     private String projectOwner;
+
+    @Getter
     private List<Backlog> backlogs;
+
+    @Getter
     private List<Sprint> sprints;
 }
