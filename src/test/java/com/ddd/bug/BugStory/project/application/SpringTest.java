@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class SpringTest {
     Sprint sprint;
@@ -24,12 +25,19 @@ public class SpringTest {
         dateStart.set(2022,0,1);
         dateEnd.set(2022,0,2);
 
+
+        List<Issue> issues = new ArrayList<>();
+        issues.add(Issue.builder().description("deneme 1").Id(1).issueStatu(IssueStatu.OPEN).build());
+        issues.add(Issue.builder().description("deneme 2").Id(2).issueStatu(IssueStatu.STARTED).build());
+        issues.add(Issue.builder().description("deneme 3").Id(3).issueStatu(IssueStatu.STARTED).build());
+        issues.add(Issue.builder().description("deneme 4").Id(4).issueStatu(IssueStatu.OPEN).build());
+
         sprint = Sprint.builder()
                 .sprintStatus(SprintStatus.NOT_STARTED)
                 .ProjectId(1)
                 .start(dateStart.getTime())
                 .end(dateEnd.getTime())
-                .issues(new ArrayList<>())
+                .issues(issues)
                 .build();
 
     }
@@ -39,51 +47,15 @@ public class SpringTest {
         Issue newIssue = Issue.builder()
                                 .description("Deneme")
                                 .assignedUser("Deneme")
-                                .Id(1)
+                                .Id(1000)
                                 .build();
-        try {
-            sprint.addIssue(newIssue);
-            assertTrue(sprint.getIssues().contains(newIssue));
-        } catch (IssueAlreadyExist e) {
-            e.printStackTrace();
-        }
-    }
 
-    @Test
-    public void testSameIssue() {
-        Issue newIssue = Issue.builder()
-                .description("Deneme")
-                .assignedUser("Deneme")
-                .Id(1)
-                .build();
+        sprint.addIssue(newIssue);
+        assertTrue(sprint.getIssues().contains(newIssue));
 
-        try {
-            sprint.addIssue(newIssue);
-        } catch (IssueAlreadyExist e) {
-            e.printStackTrace();
-        }
-
-        Exception exception = assertThrows(IssueAlreadyExist.class,() -> {
-                sprint.addIssue(newIssue);
-            });
-        assertEquals("Issue already exist", exception.getMessage());
     }
 
 
-    @Test
-    public void testCommitBacklogToSprint() {
-        Backlog backlog = Backlog.builder()
-                .Id(1)
-                .description("Backlog issue")
-                .projectId(1)
-                .build();
-
-        sprint.commitBacklogToSprint(backlog);
-
-        assertTrue(sprint.getIssues().stream()
-                .anyMatch(issue -> issue.getDescription().equals(backlog.getDescription()))
-        );
-    }
 
 
     @Test
@@ -114,6 +86,14 @@ public class SpringTest {
         });
 
         assertEquals("start date cannot be after from end date", exception.getMessage());
+    }
+
+    @Test
+    public void testOpenIssues() {
+        List<Issue> openIssues = sprint.getOpenIssues();
+        assertEquals(openIssues.stream().count(), 2);
+        assertTrue(openIssues.stream().anyMatch(issue -> issue.getId() == 1));
+        assertTrue( openIssues.stream().anyMatch(issue -> issue.getId() == 4));
     }
 
 

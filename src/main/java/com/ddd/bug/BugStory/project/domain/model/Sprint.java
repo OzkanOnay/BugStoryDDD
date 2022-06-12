@@ -1,11 +1,13 @@
 package com.ddd.bug.BugStory.project.domain.model;
 
 import com.ddd.bug.BugStory.project.domain.exception.IssueAlreadyExist;
+import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
 import lombok.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Builder
@@ -26,17 +28,14 @@ public class Sprint {
     @Getter
     private Date end;
 
-    public void addIssue(Issue issue) throws IssueAlreadyExist {
-        if(issues.contains(issue)) {
-            throw new IssueAlreadyExist();
-        }
-
+    public void addIssue(Issue issue) {
         issues.add(issue);
     }
 
-    public void commitBacklogToSprint(Backlog backlog) {
-        //todo have to convert backlog to issue
+    public void addIssues(List<Issue> issues) {
+        this.issues.addAll(issues);
     }
+
 
     public void changeStatus(SprintStatus statu) {
         sprintStatus = statu;
@@ -52,6 +51,14 @@ public class Sprint {
 
         this.setStart(start);
         this.setEnd(end);
+    }
+
+    public List<Issue> getOpenIssues() {
+        return getIssues()
+                .stream()
+                .filter(issue -> issue.getIssueStatu().equals(IssueStatu.OPEN))
+                .collect(Collectors.toList());
+
     }
 
     private void setEnd(Date end) {

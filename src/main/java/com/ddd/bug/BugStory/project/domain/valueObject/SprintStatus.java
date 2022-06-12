@@ -2,9 +2,11 @@ package com.ddd.bug.BugStory.project.domain.valueObject;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
+@EqualsAndHashCode
 public class SprintStatus {
 
     @Getter

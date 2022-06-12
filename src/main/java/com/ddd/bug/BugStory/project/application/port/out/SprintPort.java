@@ -7,4 +7,5 @@ public interface SprintPort {
     void save(Sprint sprint);
     void delete(int sprintId);
     Sprint findById(int sprintId);
+    Sprint findActiveSprint();
 }

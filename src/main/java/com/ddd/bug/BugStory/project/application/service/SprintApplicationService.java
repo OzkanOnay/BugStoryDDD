@@ -8,6 +8,7 @@ import com.ddd.bug.BugStory.project.domain.exception.IssueAlreadyExist;
 import com.ddd.bug.BugStory.project.domain.model.Backlog;
 import com.ddd.bug.BugStory.project.domain.model.Issue;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
+import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
 
 public class SprintApplicationService  {
@@ -36,7 +37,17 @@ public class SprintApplicationService  {
         Sprint sprint = sprintPort.findById(sprintId);
         Backlog backlog = backlogPort.findById(backlogId);
 
-        sprint.commitBacklogToSprint(backlog);
+        if(backlog == null) {
+            throw new IllegalArgumentException("Wrong backlog id");
+        }
+
+        backlogPort.deleteBacklog(backlogId);
+
+        sprint.addIssue(Issue
+                .builder()
+                .description(backlog.getDescription())
+                .issueStatu(IssueStatu.OPEN)
+                .build());
 
         sprintPort.save(sprint);
     }

@@ -6,4 +6,5 @@ import com.ddd.bug.BugStory.project.domain.model.Backlog;
 public interface BacklogPort {
     Backlog findById(int backlogId);
     Backlog create(Backlog backlog);
+    void deleteBacklog(int backlogId);
 }
