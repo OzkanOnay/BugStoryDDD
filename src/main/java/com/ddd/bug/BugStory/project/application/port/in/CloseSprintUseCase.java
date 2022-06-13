@@ -30,6 +30,8 @@ public class CloseSprintUseCase {
                 sprintPort.save(sprintToAssignIssues);
             }
 
+        } else {
+            //TODO Commit to backlog
         }
 
         currentSprint.changeStatus(SprintStatus.COMPLETED);

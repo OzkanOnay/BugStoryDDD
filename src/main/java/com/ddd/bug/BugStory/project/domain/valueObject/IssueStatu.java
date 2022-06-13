@@ -11,8 +11,8 @@ public class IssueStatu {
     @Getter
     private String status;
 
-    public static IssueStatu OPEN = new IssueStatu("OPEN");
-    public static IssueStatu STARTED = new IssueStatu("STARTED");
-    public static IssueStatu COMPLETED = new IssueStatu("COMPLETED");
+    public final static IssueStatu OPEN = new IssueStatu("OPEN");
+    public final static IssueStatu STARTED = new IssueStatu("STARTED");
+    public final static IssueStatu COMPLETED = new IssueStatu("COMPLETED");
 
 }

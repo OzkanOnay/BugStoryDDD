@@ -57,7 +57,7 @@ public class Sprint {
     public List<Issue> getOpenIssues() {
         return getIssues()
                 .stream()
-                .filter(issue -> issue.getIssueStatu().equals(IssueStatu.OPEN))
+                .filter(issue -> !issue.getIssueStatu().equals(IssueStatu.COMPLETED))
                 .collect(Collectors.toList());
 
     }
