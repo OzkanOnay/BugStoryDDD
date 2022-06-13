@@ -1,4 +1,4 @@
-package com.ddd.bug.BugStory.project.application;
+package com.ddd.bug.BugStory.project.domain;
 
 import com.ddd.bug.BugStory.project.domain.exception.IssueAlreadyExist;
 import com.ddd.bug.BugStory.project.domain.model.Backlog;
