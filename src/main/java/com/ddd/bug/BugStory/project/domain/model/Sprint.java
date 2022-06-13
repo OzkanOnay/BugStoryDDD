@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 @EqualsAndHashCode
 public class Sprint {
 
+    @Getter
     private int Id;
     @Getter
     private int ProjectId;

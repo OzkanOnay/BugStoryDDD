@@ -22,13 +22,16 @@ public class SprintApplicationService  {
         this.backlogPort = backlogRepository;
     }
 
-    public Sprint createSprint(int projectId) {
+    public Sprint createSprint(int projectId, String description) {
         Sprint sprint = Sprint
                             .builder()
                             .ProjectId(projectId)
+                            .description(description)
                             .sprintStatus(SprintStatus.NOT_STARTED)
                             .build();
-        sprintPort.save(sprint);
+        sprint = sprintPort.save(sprint);
+
+        //TODO raise event
 
         return sprint;
     }

@@ -3,12 +3,16 @@ package com.ddd.bug.BugStory.project.adapter;
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
+import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class SprintPortFakeAdapter implements SprintPort {
     public final static int FIND_ACTIVE_SPRINT = 1;
     public final static int NOT_FIND_ACTIVE_SPRINT = 1;
+
+    private Sprint sprint;
 
     public void setActiveSprint(int activeSprint) {
         this.activeSprint = activeSprint;
@@ -19,7 +23,7 @@ public class SprintPortFakeAdapter implements SprintPort {
 
     @Override
     public Sprint save(Sprint sprint) {
-        return Sprint.builder()
+        this.sprint = Sprint.builder()
                 .sprintStatus(sprint.getSprintStatus())
                 .issues(sprint.getIssues())
                 .start(sprint.getStart())
@@ -28,6 +32,7 @@ public class SprintPortFakeAdapter implements SprintPort {
                 .Id(1)
                 .description(sprint.getDescription())
                 .build();
+        return this.sprint;
     }
 
     @Override
@@ -37,15 +42,19 @@ public class SprintPortFakeAdapter implements SprintPort {
 
     @Override
     public Sprint findById(int sprintId) {
-        return Sprint.builder()
-                .sprintStatus(SprintStatus.NOT_STARTED)
-                .issues(null)
-                .start(new Date())
-                .end(new Date())
-                .ProjectId(1)
-                .Id(sprintId)
-                .description("Demo")
-                .build();
+        if(sprint == null ) {
+            sprint = Sprint.builder()
+                    .sprintStatus(SprintStatus.NOT_STARTED)
+                    .issues(new ArrayList<>())
+                    .start(new Date())
+                    .end(new Date())
+                    .ProjectId(1)
+                    .Id(sprintId)
+                    .description("Demo")
+                    .build();
+        }
+
+        return this.sprint;
     }
 
     @Override
