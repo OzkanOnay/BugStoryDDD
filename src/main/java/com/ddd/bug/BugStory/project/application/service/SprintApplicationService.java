@@ -69,15 +69,11 @@ public class SprintApplicationService  {
         sprintPort.save(sprint);
     }
 
-    public void startSprint(int sprintId) {
-        Sprint sprint = sprintPort.findById(sprintId);
-        sprint.changeStatus(SprintStatus.STARTED);
-        sprintPort.save(sprint);
-    }
 
     public void schedule(SprintScheduleCommand scheduleCommand) {
         Sprint sprint = sprintPort.findById(scheduleCommand.getSprintId());
         sprint.schedule(scheduleCommand.getStart(), scheduleCommand.getEnd());
+        //TODO raise event
         sprintPort.save(sprint);
     }
 

@@ -42,6 +42,7 @@ public class SprintPortFakeAdapter implements SprintPort {
 
     @Override
     public Sprint findById(int sprintId) {
+
         if(sprint == null ) {
             sprint = Sprint.builder()
                     .sprintStatus(SprintStatus.NOT_STARTED)

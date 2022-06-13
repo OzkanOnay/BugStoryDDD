@@ -10,6 +10,7 @@ import com.ddd.bug.BugStory.project.application.service.SprintApplicationService
 import com.ddd.bug.BugStory.project.domain.exception.IssueAlreadyExist;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
@@ -23,7 +24,8 @@ public class SprintApplicationServiceTest {
     private SprintPort sprintPort;
     private BacklogPort backlogPort;
 
-    public SprintApplicationServiceTest() {
+    @BeforeEach
+    public void setup() {
         this.sprintPort = new SprintPortFakeAdapter();
         this.backlogPort = new BacklogPortFakeAdapter();
 
@@ -73,12 +75,6 @@ public class SprintApplicationServiceTest {
         }
     }
 
-    @Test
-    public void startSprintTest() {
-        sprintApplicationService.startSprint(1);
-        Sprint sprint = sprintPort.findById(1);
-        assertEquals(sprint.getSprintStatus(), SprintStatus.STARTED);
-    }
 
     @Test
     public void scheduleSprintTest() {

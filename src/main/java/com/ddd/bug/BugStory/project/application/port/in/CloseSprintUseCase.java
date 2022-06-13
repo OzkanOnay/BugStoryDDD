@@ -10,6 +10,10 @@ import java.util.List;
 public class CloseSprintUseCase {
     private SprintPort sprintPort;
 
+    public CloseSprintUseCase(SprintPort sprintPort) {
+        this.sprintPort = sprintPort;
+    }
+
     public void closeSprint(CloseSprintCommand closeSprintCommand) {
         Sprint currentSprint = sprintPort.findById(closeSprintCommand.getSprintId());
 
