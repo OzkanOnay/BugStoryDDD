@@ -81,13 +81,6 @@ public class SprintApplicationServiceTest {
     }
 
     @Test
-    public void closeSprintTest() {
-        sprintApplicationService.closeSprint(1);
-        Sprint sprint = sprintPort.findById(1);
-        assertEquals(sprint.getSprintStatus(), SprintStatus.COMPLETED);
-    }
-
-    @Test
     public void scheduleSprintTest() {
         Date start = Calendar.getInstance().getTime();
 

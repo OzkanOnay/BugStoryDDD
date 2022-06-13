@@ -69,12 +69,6 @@ public class SprintApplicationService  {
         sprintPort.save(sprint);
     }
 
-    public void closeSprint(int sprintId) {
-        Sprint sprint = sprintPort.findById(sprintId);
-        sprint.changeStatus(SprintStatus.COMPLETED);
-        sprintPort.save(sprint);
-    }
-
     public void startSprint(int sprintId) {
         Sprint sprint = sprintPort.findById(sprintId);
         sprint.changeStatus(SprintStatus.STARTED);
