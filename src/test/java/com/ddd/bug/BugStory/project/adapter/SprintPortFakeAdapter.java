@@ -37,6 +37,7 @@ public class SprintPortFakeAdapter implements SprintPort {
                 .end(new Date())
                 .ProjectId(1)
                 .Id(1)
+                .ProjectId(1)
                 .description("Demo")
                 .build());
 
@@ -47,6 +48,7 @@ public class SprintPortFakeAdapter implements SprintPort {
                 .end(new Date())
                 .ProjectId(1)
                 .Id(2)
+                .ProjectId(1)
                 .description("Demo")
                 .build());
     }

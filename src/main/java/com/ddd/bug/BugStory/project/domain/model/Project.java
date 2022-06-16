@@ -2,6 +2,7 @@ package com.ddd.bug.BugStory.project.domain.model;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode
@@ -22,6 +23,40 @@ public class Project {
     @Getter
     private List<Backlog> backlogs;
 
-    @Getter
-    private List<Sprint> sprints;
+    public void addBacklog(Backlog backlog) {
+        this.getBacklogs().add(backlog);
+    }
+
+    public Backlog commitIssue(Issue issue) {
+        Backlog newBacklog = Backlog.builder()
+                .description(issue.getDescription())
+                .projectId(this.getId())
+                .comments(issue.getComments())
+                .assignedUser(issue.getAssignedUser())
+                .build();
+
+        this.addBacklog(newBacklog);
+
+        return newBacklog;
+    }
+
+    public List<Backlog> commitIssues(List<Issue> issues) {
+        List<Backlog> backlogList = new ArrayList<>();
+        issues.forEach(issue -> {
+
+            Backlog newBacklog = Backlog.builder()
+                    .description(issue.getDescription())
+                    .projectId(this.getId())
+                    .comments(issue.getComments())
+                    .assignedUser(issue.getAssignedUser())
+                    .build();
+
+            backlogList.add(newBacklog);
+        });
+
+        this.getBacklogs().addAll(backlogList);
+
+        return backlogList;
+    }
+
 }

@@ -50,6 +50,7 @@ public class SprintApplicationService  {
                 .builder()
                 .description(backlog.getDescription())
                 .issueStatu(IssueStatu.OPEN)
+                .comments(backlog.getComments())
                 .build());
 
         sprintPort.save(sprint);

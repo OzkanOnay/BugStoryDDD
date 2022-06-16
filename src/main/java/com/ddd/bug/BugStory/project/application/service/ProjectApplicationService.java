@@ -12,7 +12,7 @@ public class ProjectApplicationService {
     }
 
     public Project createProject(NewProjectCommand newProjectCommand) {
-        Project createdProject = projectPort.create(Project.builder()
+        Project createdProject = projectPort.save(Project.builder()
                 .projectName(newProjectCommand.getName())
                 .projectOwner(newProjectCommand.getOwner())
                 .description(newProjectCommand.getDescription())
@@ -21,4 +21,5 @@ public class ProjectApplicationService {
 
         return createdProject;
     }
+
 }
