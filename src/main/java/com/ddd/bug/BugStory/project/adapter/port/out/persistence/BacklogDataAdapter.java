@@ -2,11 +2,12 @@ package com.ddd.bug.BugStory.project.adapter.port.out.persistence;
 
 import com.ddd.bug.BugStory.project.application.port.out.BacklogPort;
 import com.ddd.bug.BugStory.project.domain.model.Backlog;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Component
 public class BacklogDataAdapter implements BacklogPort {
     @Override
     public Backlog findById(int backlogId) {

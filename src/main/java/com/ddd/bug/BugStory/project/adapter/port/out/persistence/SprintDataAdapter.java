@@ -2,9 +2,10 @@ package com.ddd.bug.BugStory.project.adapter.port.out.persistence;
 
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class SprintDataAdapter implements SprintPort {
     @Override
     public Sprint save(Sprint sprint) {
