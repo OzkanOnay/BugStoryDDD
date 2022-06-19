@@ -9,6 +9,7 @@ import java.util.List;
 @Builder
 public class Project {
     @Getter
+    @Setter
     private int Id;
 
     @Getter
@@ -30,7 +31,7 @@ public class Project {
     public Backlog commitIssue(Issue issue) {
         Backlog newBacklog = Backlog.builder()
                 .description(issue.getDescription())
-                .projectId(this.getId())
+                .project(this)
                 .comments(issue.getComments())
                 .assignedUser(issue.getAssignedUser())
                 .build();
@@ -46,7 +47,7 @@ public class Project {
 
             Backlog newBacklog = Backlog.builder()
                     .description(issue.getDescription())
-                    .projectId(this.getId())
+                    .project(this)
                     .comments(issue.getComments())
                     .assignedUser(issue.getAssignedUser())
                     .build();

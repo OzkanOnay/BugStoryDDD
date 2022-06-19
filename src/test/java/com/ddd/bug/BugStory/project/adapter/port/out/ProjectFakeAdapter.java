@@ -1,4 +1,4 @@
-package com.ddd.bug.BugStory.project.adapter;
+package com.ddd.bug.BugStory.project.adapter.port.out;
 
 import com.ddd.bug.BugStory.project.application.port.out.ProjectPort;
 import com.ddd.bug.BugStory.project.domain.model.Project;

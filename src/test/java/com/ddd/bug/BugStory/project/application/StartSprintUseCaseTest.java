@@ -1,9 +1,7 @@
 package com.ddd.bug.BugStory.project.application;
 
-import com.ddd.bug.BugStory.project.adapter.SprintPortFakeAdapter;
-import com.ddd.bug.BugStory.project.application.port.in.CloseSprintUseCase;
+import com.ddd.bug.BugStory.project.adapter.port.out.SprintPortFakeAdapter;
 import com.ddd.bug.BugStory.project.application.port.in.StartSprintUseCase;
-import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
 import com.ddd.bug.BugStory.project.domain.exception.ActiveSprintException;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;

@@ -12,7 +12,7 @@ public class Backlog {
     private int Id;
 
     @Getter
-    private int projectId;
+    private Project project;
 
     @Getter
     private String description;

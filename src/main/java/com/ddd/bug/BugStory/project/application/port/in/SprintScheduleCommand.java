@@ -1,6 +1,5 @@
 package com.ddd.bug.BugStory.project.application.port.in;
 
-import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

@@ -3,7 +3,6 @@ package com.ddd.bug.BugStory.project.application.service;
 import com.ddd.bug.BugStory.project.application.port.in.NewBacklogCommand;
 import com.ddd.bug.BugStory.project.application.port.out.BacklogPort;
 import com.ddd.bug.BugStory.project.domain.model.Backlog;
-import com.ddd.bug.BugStory.project.domain.model.Issue;
 
 public class BacklogApplicationService {
 

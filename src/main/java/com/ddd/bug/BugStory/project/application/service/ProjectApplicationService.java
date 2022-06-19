@@ -22,4 +22,8 @@ public class ProjectApplicationService {
         return createdProject;
     }
 
+    public Project getProject(int id) {
+        return this.projectPort.findById(id);
+    }
+
 }

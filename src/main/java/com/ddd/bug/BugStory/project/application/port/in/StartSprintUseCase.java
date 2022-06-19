@@ -1,7 +1,6 @@
 package com.ddd.bug.BugStory.project.application.port.in;
 
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
-import com.ddd.bug.BugStory.project.application.service.SprintApplicationService;
 import com.ddd.bug.BugStory.project.domain.exception.ActiveSprintException;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;

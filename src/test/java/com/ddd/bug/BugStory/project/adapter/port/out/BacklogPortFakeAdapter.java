@@ -1,7 +1,9 @@
-package com.ddd.bug.BugStory.project.adapter;
+package com.ddd.bug.BugStory.project.adapter.port.out;
 
+import com.ddd.bug.BugStory.project.adapter.port.out.persistence.jpa.entity.ProjectEntity;
 import com.ddd.bug.BugStory.project.application.port.out.BacklogPort;
 import com.ddd.bug.BugStory.project.domain.model.Backlog;
+import com.ddd.bug.BugStory.project.domain.model.Project;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +14,19 @@ public class BacklogPortFakeAdapter implements BacklogPort {
 
     public BacklogPortFakeAdapter() {
         backlogs = new ArrayList<>();
+        Project project = Project.builder().Id(1).build();
         backlogs.add(
                 Backlog.builder()
                         .Id(1)
                         .description("backlog_test")
-                        .projectId(1)
+                        .project(project)
                         .build()
         );
         backlogs.add(
                 Backlog.builder()
                         .Id(2)
                         .description("backlog_test")
-                        .projectId(2)
+                        .project(project)
                         .build()
         );
     }
@@ -42,7 +45,7 @@ public class BacklogPortFakeAdapter implements BacklogPort {
         Backlog createdBacklog = Backlog.builder()
                 .Id(1)
                 .description(backlog.getDescription())
-                .projectId(backlog.getProjectId())
+                .project(backlog.getProject())
                 .build();
 
         backlogs.add(createdBacklog);

@@ -1,6 +1,5 @@
 package com.ddd.bug.BugStory.project.application.port.out;
 
-import com.ddd.bug.BugStory.project.application.port.in.NewBacklogCommand;
 import com.ddd.bug.BugStory.project.domain.model.Backlog;
 
 import java.util.List;

@@ -1,11 +1,10 @@
-package com.ddd.bug.BugStory.project.adapter;
+package com.ddd.bug.BugStory.project.adapter.port.out;
 
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
 import com.ddd.bug.BugStory.project.domain.model.Issue;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
-import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Date;

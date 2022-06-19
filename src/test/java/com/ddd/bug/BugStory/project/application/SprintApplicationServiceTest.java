@@ -1,7 +1,7 @@
 package com.ddd.bug.BugStory.project.application;
 
-import com.ddd.bug.BugStory.project.adapter.BacklogPortFakeAdapter;
-import com.ddd.bug.BugStory.project.adapter.SprintPortFakeAdapter;
+import com.ddd.bug.BugStory.project.adapter.port.out.BacklogPortFakeAdapter;
+import com.ddd.bug.BugStory.project.adapter.port.out.SprintPortFakeAdapter;
 import com.ddd.bug.BugStory.project.application.port.in.NewIssueCommand;
 import com.ddd.bug.BugStory.project.application.port.in.SprintScheduleCommand;
 import com.ddd.bug.BugStory.project.application.port.out.BacklogPort;
