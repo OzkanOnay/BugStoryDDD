@@ -1,10 +1,10 @@
 package com.ddd.bug.BugStory.project.application;
 
-import com.ddd.bug.BugStory.project.adapter.port.out.BacklogPortFakeAdapter;
-import com.ddd.bug.BugStory.project.adapter.port.out.SprintPortFakeAdapter;
+import com.ddd.bug.BugStory.project.adapter.port.out.fake.IssuePortFakeAdapter;
+import com.ddd.bug.BugStory.project.adapter.port.out.fake.SprintPortFakeAdapter;
 import com.ddd.bug.BugStory.project.application.port.in.NewIssueCommand;
 import com.ddd.bug.BugStory.project.application.port.in.SprintScheduleCommand;
-import com.ddd.bug.BugStory.project.application.port.out.BacklogPort;
+import com.ddd.bug.BugStory.project.application.port.out.IssuePort;
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
 import com.ddd.bug.BugStory.project.application.service.SprintApplicationService;
 import com.ddd.bug.BugStory.project.domain.exception.IssueAlreadyExist;
@@ -22,16 +22,16 @@ public class SprintApplicationServiceTest {
 
     private SprintApplicationService sprintApplicationService;
     private SprintPort sprintPort;
-    private BacklogPort backlogPort;
+    private IssuePort issuePort;
 
     @BeforeEach
     public void setup() {
         this.sprintPort = new SprintPortFakeAdapter();
-        this.backlogPort = new BacklogPortFakeAdapter();
+        this.issuePort = new IssuePortFakeAdapter();
 
         sprintApplicationService = new SprintApplicationService(
                 this.sprintPort,
-                this.backlogPort);
+                this.issuePort);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class SprintApplicationServiceTest {
         endCalendar.add(Calendar.DATE, 7);
         Date end = endCalendar.getTime();
 
-        SprintScheduleCommand sprintScheduleCommand = new SprintScheduleCommand(1, start, end);
+        SprintScheduleCommand sprintScheduleCommand = new SprintScheduleCommand(start, end);
         sprintApplicationService.schedule(sprintScheduleCommand);
 
         Sprint sprint = sprintPort.findById(1);

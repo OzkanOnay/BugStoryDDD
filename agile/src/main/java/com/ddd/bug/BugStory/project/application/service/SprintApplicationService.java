@@ -2,7 +2,7 @@ package com.ddd.bug.BugStory.project.application.service;
 
 import com.ddd.bug.BugStory.project.application.port.in.NewIssueCommand;
 import com.ddd.bug.BugStory.project.application.port.in.SprintScheduleCommand;
-import com.ddd.bug.BugStory.project.application.port.out.BacklogPort;
+import com.ddd.bug.BugStory.project.application.port.out.IssuePort;
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
 import com.ddd.bug.BugStory.project.domain.exception.IssueAlreadyExist;
 import com.ddd.bug.BugStory.project.domain.model.Backlog;
@@ -14,12 +14,11 @@ import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
 public class SprintApplicationService  {
 
     private SprintPort sprintPort;
-    private BacklogPort backlogPort;
+    private IssuePort issuePort;
 
-    public SprintApplicationService(SprintPort sprintRepository,
-                                    BacklogPort backlogRepository) {
+    public SprintApplicationService(SprintPort sprintRepository, IssuePort issuePort) {
         this.sprintPort = sprintRepository;
-        this.backlogPort = backlogRepository;
+        this.issuePort = issuePort;
     }
 
     public Sprint createSprint(int projectId, String description) {
@@ -36,22 +35,16 @@ public class SprintApplicationService  {
         return sprint;
     }
 
-    public void commitBacklogToSprint(int sprintId, int backlogId) {
+    public void commitBacklogToSprint(int sprintId, int issueId) {
         Sprint sprint = sprintPort.findById(sprintId);
-        Backlog backlog = backlogPort.findById(backlogId);
+        Issue issue = issuePort.findById(issueId);
 
-        if(backlog == null) {
-            throw new IllegalArgumentException("Wrong backlog id");
+        if(issue == null) {
+            throw new IllegalArgumentException("Wrong issue id");
         }
 
-        backlogPort.deleteBacklog(backlogId);
-
-        sprint.addIssue(Issue
-                .builder()
-                .description(backlog.getDescription())
-                .issueStatu(IssueStatu.OPEN)
-                .comments(backlog.getComments())
-                .build());
+        issue.commitToSprint(sprintId);
+        sprint.addIssue(issue);
 
         sprintPort.save(sprint);
     }

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class Sprint {
 
     @Getter
-    private int Id;
+    private Integer id;
     @Getter
     private int ProjectId;
     @Getter

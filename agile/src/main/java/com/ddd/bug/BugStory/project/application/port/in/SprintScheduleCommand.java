@@ -9,7 +9,6 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class SprintScheduleCommand {
 
-    @NonNull
     @Getter
     private int sprintId;
     @NonNull

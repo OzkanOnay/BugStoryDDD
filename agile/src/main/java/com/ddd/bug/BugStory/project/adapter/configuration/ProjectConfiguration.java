@@ -1,9 +1,8 @@
 package com.ddd.bug.BugStory.project.adapter.configuration;
 
-import com.ddd.bug.BugStory.project.application.port.out.BacklogPort;
+import com.ddd.bug.BugStory.project.application.port.out.IssuePort;
 import com.ddd.bug.BugStory.project.application.port.out.ProjectPort;
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
-import com.ddd.bug.BugStory.project.application.service.BacklogApplicationService;
 import com.ddd.bug.BugStory.project.application.service.ProjectApplicationService;
 import com.ddd.bug.BugStory.project.application.service.SprintApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class ProjectConfiguration {
     SprintPort sprintPort;
 
     @Autowired
-    BacklogPort backlogPort;
+    IssuePort issuePort;
 
     @Bean
     public ProjectApplicationService projectApplicationService() {
@@ -29,12 +28,8 @@ public class ProjectConfiguration {
 
     @Bean
     public SprintApplicationService sprintApplicationService() {
-        return new SprintApplicationService(sprintPort, backlogPort);
+        return new SprintApplicationService(sprintPort, issuePort);
     }
 
-    @Bean
-    public BacklogApplicationService backlogApplicationService() {
-        return new BacklogApplicationService(backlogPort);
-    }
 
 }

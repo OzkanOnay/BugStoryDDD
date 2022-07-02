@@ -11,12 +11,11 @@ public interface ProjectMapper {
 
     ProjectMapper INSTANCE = Mappers.getMapper(ProjectMapper.class);
 
-    @Mapping(source = "projectName",target = "name")
-    @Mapping(source = "projectOwner",target = "owner")
+
     ProjectEntity domainToEntity(Project project);
 
-    @Mapping(source = "name",target = "projectName")
-    @Mapping(source = "owner",target = "projectOwner")
     Project entityToDomain(ProjectEntity projectEntity);
+
+
 
 }

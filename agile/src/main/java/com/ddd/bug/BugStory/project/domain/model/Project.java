@@ -10,7 +10,7 @@ import java.util.List;
 public class Project {
     @Getter
     @Setter
-    private int Id;
+    private Integer id;
 
     @Getter
     private String projectName;
@@ -20,7 +20,7 @@ public class Project {
 
     @Getter
     private String projectOwner;
-
+/*
     @Getter
     private List<Backlog> backlogs;
 
@@ -44,20 +44,12 @@ public class Project {
     public List<Backlog> commitIssues(List<Issue> issues) {
         List<Backlog> backlogList = new ArrayList<>();
         issues.forEach(issue -> {
-
-            Backlog newBacklog = Backlog.builder()
-                    .description(issue.getDescription())
-                    .project(this)
-                    .comments(issue.getComments())
-                    .assignedUser(issue.getAssignedUser())
-                    .build();
-
-            backlogList.add(newBacklog);
+            issue.uncommitFromSprint();
         });
 
         this.getBacklogs().addAll(backlogList);
 
         return backlogList;
-    }
+    }*/
 
 }

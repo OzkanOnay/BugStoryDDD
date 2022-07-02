@@ -15,4 +15,8 @@ public class IssueStatu {
     public final static IssueStatu STARTED = new IssueStatu("STARTED");
     public final static IssueStatu COMPLETED = new IssueStatu("COMPLETED");
 
+    @Override
+    public String toString() {
+        return status;
+    }
 }

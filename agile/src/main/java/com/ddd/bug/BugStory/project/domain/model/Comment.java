@@ -1,20 +1,17 @@
 package com.ddd.bug.BugStory.project.domain.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
 public class Comment {
-    private int Id;
+    private int id;
 
-    @NonNull
+    @Getter
     private int issueId;
 
-    @NonNull
+    @Getter
     private String comment;
 
 }

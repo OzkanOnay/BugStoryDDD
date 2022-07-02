@@ -3,15 +3,28 @@
  */
 
 plugins {
+    id 'org.springframework.boot' version '2.7.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id 'maven-publish'
 }
+
+
+group = 'com.ddd.bug'
+version = '0.0.1-SNAPSHOT'
+description = 'BugStory Agile'
+sourceCompatibility = '17'
+
 
 repositories {
     mavenLocal()
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
+}
+
+
+jar {
+    enabled = false
 }
 
 dependencies {
@@ -25,15 +38,14 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
 
     implementation 'org.mapstruct:mapstruct:1.5.1.Final'
-    implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
-    runtimeOnly 'org.postgresql:postgresql:42.3.4'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.6.7'
-}
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.1.Final'
 
-group = 'com.ddd.bug'
-version = '0.0.1-SNAPSHOT'
-description = 'BugStory Agile'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+    implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+}
 
 
 tasks.withType(JavaCompile) {

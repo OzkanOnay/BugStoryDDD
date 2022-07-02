@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import java.util.Objects;
+import java.util.Optional;
+
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode
 public class SprintStatus {
@@ -16,4 +19,14 @@ public class SprintStatus {
     public static SprintStatus STARTED = new SprintStatus("STARTED");
     public static SprintStatus COMPLETED = new SprintStatus("COMPLETED");
 
+    public static SprintStatus valueOf(String status) {
+        if(status != "NOT_STARTED" && status != "STARTED" && status != "COMPLETED")
+            throw new IllegalArgumentException("Wrong status code");
+        return new SprintStatus(status);
+    }
+
+    @Override
+    public String toString() {
+        return status;
+    }
 }
