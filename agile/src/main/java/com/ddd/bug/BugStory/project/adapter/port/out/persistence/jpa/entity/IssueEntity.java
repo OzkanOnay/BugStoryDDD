@@ -1,9 +1,6 @@
 package com.ddd.bug.BugStory.project.adapter.port.out.persistence.jpa.entity;
 
-import lombok.Data;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class IssueEntity {
@@ -11,8 +8,12 @@ public class IssueEntity {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne
-    private SprintEntity sprint;
+    private Integer sprint_id;
+    private String description;
+    private String issueStatu;
+    private String assignedUser;
+    private String issueType;
+    private int orderNumber;
 
     public Integer getId() {
         return id;
@@ -22,12 +23,51 @@ public class IssueEntity {
         this.id = id;
     }
 
-    public SprintEntity getSprint() {
-        return sprint;
+    public Integer getSprint_id() {
+        return sprint_id;
     }
 
-    public void setSprint(SprintEntity sprint) {
-        this.sprint = sprint;
+    public void setSprint_id(Integer sprint_id) {
+        this.sprint_id = sprint_id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getIssueStatu() {
+        return issueStatu;
+    }
+
+    public void setIssueStatu(String issueStatu) {
+        this.issueStatu = issueStatu;
+    }
+
+    public String getAssignedUser() {
+        return assignedUser;
+    }
+
+    public void setAssignedUser(String assignedUser) {
+        this.assignedUser = assignedUser;
+    }
+
+    public String getIssueType() {
+        return issueType;
+    }
+
+    public void setIssueType(String issueType) {
+        this.issueType = issueType;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
+    }
 }

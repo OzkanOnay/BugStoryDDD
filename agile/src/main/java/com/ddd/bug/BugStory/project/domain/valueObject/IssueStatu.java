@@ -1,22 +1,18 @@
 package com.ddd.bug.BugStory.project.domain.valueObject;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+public enum IssueStatu {
+    OPEN("OPEN"),
+    STARTED("STARTED"),
+    COMPLETED("COMPLETED");
 
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@EqualsAndHashCode
-public class IssueStatu {
-    @Getter
-    private String status;
+    private String statuCode;
 
-    public final static IssueStatu OPEN = new IssueStatu("OPEN");
-    public final static IssueStatu STARTED = new IssueStatu("STARTED");
-    public final static IssueStatu COMPLETED = new IssueStatu("COMPLETED");
-
-    @Override
-    public String toString() {
-        return status;
+    IssueStatu(String statuCode)  {
+        this.statuCode = statuCode;
     }
+
+    public String getCode() {
+        return statuCode;
+    }
+
 }

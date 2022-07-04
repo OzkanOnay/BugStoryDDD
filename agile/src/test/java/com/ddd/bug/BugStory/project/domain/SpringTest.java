@@ -24,10 +24,10 @@ public class SpringTest {
 
 
         List<Issue> issues = new ArrayList<>();
-        issues.add(Issue.builder().description("deneme 1").Id(1).issueStatu(IssueStatu.OPEN).build());
-        issues.add(Issue.builder().description("deneme 2").Id(2).issueStatu(IssueStatu.STARTED).build());
-        issues.add(Issue.builder().description("deneme 3").Id(3).issueStatu(IssueStatu.STARTED).build());
-        issues.add(Issue.builder().description("deneme 4").Id(4).issueStatu(IssueStatu.OPEN).build());
+        issues.add(Issue.builder().description("deneme 1").id(1).issueStatu(IssueStatu.OPEN).build());
+        issues.add(Issue.builder().description("deneme 2").id(2).issueStatu(IssueStatu.STARTED).build());
+        issues.add(Issue.builder().description("deneme 3").id(3).issueStatu(IssueStatu.STARTED).build());
+        issues.add(Issue.builder().description("deneme 4").id(4).issueStatu(IssueStatu.OPEN).build());
 
         sprint = Sprint.builder()
                 .sprintStatus(SprintStatus.NOT_STARTED)
@@ -44,7 +44,7 @@ public class SpringTest {
         Issue newIssue = Issue.builder()
                                 .description("Deneme")
                                 .assignedUser("Deneme")
-                                .Id(1000)
+                                .id(1000)
                                 .build();
 
         sprint.addIssue(newIssue);

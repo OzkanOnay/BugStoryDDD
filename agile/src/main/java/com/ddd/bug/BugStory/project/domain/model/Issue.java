@@ -1,6 +1,5 @@
 package com.ddd.bug.BugStory.project.domain.model;
 
-import com.ddd.bug.BugStory.project.domain.valueObject.IssuePriorities;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueType;
 import lombok.*;
@@ -11,15 +10,16 @@ import java.util.List;
 @Builder
 public class Issue {
     @Getter
-    private Integer Id;
+    private Integer id;
 
     @Getter
     private String description;
 
     @Getter
-    private IssueType type;
+    private IssueType issueType;
 
-    private IssuePriorities priority;
+    @Getter
+    private int orderNumber;
 
     @Getter
     private IssueStatu issueStatu;
@@ -31,21 +31,28 @@ public class Issue {
     private List<Comment> comments;
 
     @Getter
-    private int sprintId;
+    private int sprint_id;
 
     public void addComment(Comment comment) {
         //validation
-
         comments.add(comment);
     }
 
     public void uncommitFromSprint() {
-        this.sprintId = 0;
+        this.sprint_id = 0;
     }
 
 
     public void commitToSprint(int sprintId) {
-        this.sprintId = sprintId;
+        this.sprint_id = sprintId;
+    }
+
+    public void changeStatus(IssueStatu issueStatu) {
+        this.issueStatu = issueStatu;
+    }
+
+    public void changeType(IssueType issueType) {
+        this.issueType = issueType;
     }
 
 }

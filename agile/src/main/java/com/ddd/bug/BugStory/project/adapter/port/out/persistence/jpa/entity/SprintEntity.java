@@ -23,7 +23,8 @@ public class SprintEntity {
 
     private Integer project_id;
 
-    @OneToMany( cascade = CascadeType.ALL, mappedBy = "sprint")
+    @OneToMany( cascade = CascadeType.ALL)
+    @JoinColumn(name = "issue_id")
     private List<IssueEntity> issues;
 
     public Integer getProject_id() {

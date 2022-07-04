@@ -25,9 +25,9 @@ public class SprintPortFakeAdapter implements SprintPort {
     public SprintPortFakeAdapter() {
         sprints = new ArrayList<>();
         List<Issue> issues = new ArrayList<>();
-        issues.add(Issue.builder().description("issue 1").issueStatu(IssueStatu.OPEN).Id(1).build());
-        issues.add(Issue.builder().description("issue 2").issueStatu(IssueStatu.STARTED).Id(2).build());
-        issues.add(Issue.builder().description("issue 3").issueStatu(IssueStatu.COMPLETED).Id(3).build());
+        issues.add(Issue.builder().description("issue 1").issueStatu(IssueStatu.OPEN).id(1).build());
+        issues.add(Issue.builder().description("issue 2").issueStatu(IssueStatu.STARTED).id(2).build());
+        issues.add(Issue.builder().description("issue 3").issueStatu(IssueStatu.COMPLETED).id(3).build());
 
         sprints.add(Sprint.builder()
                 .sprintStatus(SprintStatus.STARTED)

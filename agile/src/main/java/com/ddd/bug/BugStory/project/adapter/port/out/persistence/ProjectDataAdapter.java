@@ -16,11 +16,8 @@ public class ProjectDataAdapter implements ProjectPort {
 
     @Override
     public Project save(Project project) {
-
         ProjectEntity projectEntity = ProjectMapper.INSTANCE.domainToEntity(project);
-
         projectEntity = projectRepository.save(projectEntity);
-
         project.setId(projectEntity.getId());
         return project;
     }
