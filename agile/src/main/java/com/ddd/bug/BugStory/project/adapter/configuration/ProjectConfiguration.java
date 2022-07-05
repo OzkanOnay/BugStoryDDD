@@ -3,6 +3,7 @@ package com.ddd.bug.BugStory.project.adapter.configuration;
 import com.ddd.bug.BugStory.project.application.port.out.IssuePort;
 import com.ddd.bug.BugStory.project.application.port.out.ProjectPort;
 import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
+import com.ddd.bug.BugStory.project.application.service.IssueApplicationService;
 import com.ddd.bug.BugStory.project.application.service.ProjectApplicationService;
 import com.ddd.bug.BugStory.project.application.service.SprintApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,9 @@ public class ProjectConfiguration {
         return new SprintApplicationService(sprintPort, issuePort);
     }
 
+    @Bean
+    public IssueApplicationService issueApplicationService() {
+        return new IssueApplicationService(sprintPort, issuePort);
+    }
 
 }

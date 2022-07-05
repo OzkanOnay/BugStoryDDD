@@ -49,7 +49,7 @@ public class SprintApplicationService  {
         sprintPort.save(sprint);
     }
 
-    public void addIssueToSprint(NewIssueCommand newIssueCommand) throws IssueAlreadyExist {
+    public void addIssueToSprint(NewIssueCommand newIssueCommand) {
 
         Sprint sprint = sprintPort.findById(newIssueCommand.getSprintId());
 
@@ -61,6 +61,7 @@ public class SprintApplicationService  {
         sprint.addIssue(issue);
 
         sprintPort.save(sprint);
+
     }
 
 

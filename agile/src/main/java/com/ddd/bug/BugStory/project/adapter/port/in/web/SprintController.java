@@ -1,8 +1,9 @@
 package com.ddd.bug.BugStory.project.adapter.port.in.web;
 
-import com.ddd.bug.BugStory.project.application.port.in.CloseSprintUseCase;
-import com.ddd.bug.BugStory.project.application.port.in.StartSprintUseCase;
+import com.ddd.bug.BugStory.project.application.port.in.*;
+import com.ddd.bug.BugStory.project.application.service.SprintApplicationService;
 import com.ddd.bug.BugStory.project.domain.exception.ActiveSprintException;
+import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,9 +11,25 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/sprint")
 public class SprintController {
-/*
+
+    @Autowired
+    SprintApplicationService sprintApplicationService;
+
     @Autowired
     StartSprintUseCase startSprintUseCase;
+
+    @Autowired
+    CloseSprintUseCase closeSprintUseCase;
+
+    @PostMapping
+    public Sprint createSprint(@RequestBody NewSprintCommand sprintCommand) {
+        return sprintApplicationService.createSprint(sprintCommand.getProjectId(), sprintCommand.getDescription());
+    }
+
+    @PostMapping
+    public void reSchedule(@RequestBody SprintScheduleCommand scheduleCommand) {
+        sprintApplicationService.schedule(scheduleCommand);
+    }
 
     @GetMapping("/{id}")
     public void startSprint(@PathVariable("id") int sprintId) {
@@ -24,8 +41,9 @@ public class SprintController {
         }
     }
 
-    @Autowired
-    CloseSprintUseCase closeSprintUseCase;
+    @PostMapping("/{id}")
+    public void closeSprint(@RequestBody CloseSprintCommand closeSprintCommand) {
+        closeSprintUseCase.closeSprint(closeSprintCommand);
+    }
 
- */
 }
