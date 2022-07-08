@@ -9,6 +9,8 @@ import com.ddd.bug.BugStory.project.application.port.out.SprintPort;
 import com.ddd.bug.BugStory.project.application.service.SprintApplicationService;
 import com.ddd.bug.BugStory.project.domain.exception.IssueAlreadyExist;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
+import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
+import com.ddd.bug.BugStory.project.domain.valueObject.IssueType;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,15 +66,21 @@ public class SprintApplicationServiceTest {
 
     @Test
     public void addIssueToSprintTest() {
-        NewIssueCommand newIssueCommand = new NewIssueCommand(1, "issue_test");
 
-        try {
-            sprintApplicationService.addIssueToSprint(newIssueCommand);
-            Sprint sprint = sprintPort.findById(1);
-            assertTrue(sprint.getIssues().stream().anyMatch(issue -> issue.getDescription().equals("issue_test")));
-        } catch (IssueAlreadyExist e) {
-            e.printStackTrace();
-        }
+        NewIssueCommand newIssueCommand = NewIssueCommand
+                .builder()
+                .issueType(IssueType.TASK)
+                .description("issue test")
+                .sprintId(1)
+                .assignedUser("özkan")
+                .issueStatu(IssueStatu.OPEN)
+                .orderNumber(1)
+                .build();
+
+        sprintApplicationService.addIssueToSprint(newIssueCommand);
+        Sprint sprint = sprintPort.findById(1);
+        assertTrue(sprint.getIssues().stream().anyMatch(issue -> issue.getDescription().equals("issue_test")));
+
     }
 
 

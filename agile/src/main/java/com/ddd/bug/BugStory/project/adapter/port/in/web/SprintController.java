@@ -26,12 +26,12 @@ public class SprintController {
         return sprintApplicationService.createSprint(sprintCommand.getProjectId(), sprintCommand.getDescription());
     }
 
-    @PostMapping
+    @PostMapping("/reschedule")
     public void reSchedule(@RequestBody SprintScheduleCommand scheduleCommand) {
         sprintApplicationService.schedule(scheduleCommand);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/start/{id}")
     public void startSprint(@PathVariable("id") int sprintId) {
         try {
             startSprintUseCase.startSprint(sprintId);
@@ -41,7 +41,7 @@ public class SprintController {
         }
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/close/{id}")
     public void closeSprint(@RequestBody CloseSprintCommand closeSprintCommand) {
         closeSprintUseCase.closeSprint(closeSprintCommand);
     }

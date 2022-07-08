@@ -3,11 +3,13 @@ package com.ddd.bug.BugStory.project.application.port.in;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueType;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class NewIssueCommand {
     @Getter
     private int sprintId;
