@@ -10,6 +10,7 @@ import com.ddd.bug.BugStory.project.domain.model.Issue;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
 import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
+import org.springframework.transaction.annotation.Transactional;
 
 public class SprintApplicationService  {
 
@@ -35,6 +36,7 @@ public class SprintApplicationService  {
         return sprint;
     }
 
+    @Transactional
     public void commitBacklogToSprint(int sprintId, int issueId) {
         Sprint sprint = sprintPort.findById(sprintId);
         Issue issue = issuePort.findById(issueId);
@@ -49,6 +51,7 @@ public class SprintApplicationService  {
         sprintPort.save(sprint);
     }
 
+    @Transactional
     public void addIssueToSprint(NewIssueCommand newIssueCommand) {
 
         Sprint sprint = sprintPort.findById(newIssueCommand.getSprintId());
@@ -64,7 +67,7 @@ public class SprintApplicationService  {
 
     }
 
-
+    @Transactional
     public Sprint schedule(SprintScheduleCommand scheduleCommand) {
         Sprint sprint = sprintPort.findById(scheduleCommand.getSprintId());
         sprint.schedule(scheduleCommand.getStart(), scheduleCommand.getEnd());

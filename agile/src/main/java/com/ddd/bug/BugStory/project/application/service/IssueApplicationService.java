@@ -8,6 +8,7 @@ import com.ddd.bug.BugStory.project.domain.model.Issue;
 import com.ddd.bug.BugStory.project.domain.model.Sprint;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueStatu;
 import com.ddd.bug.BugStory.project.domain.valueObject.IssueType;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -23,6 +24,7 @@ public class IssueApplicationService implements NewIssueUseCase {
         this.issuePort = issuePort;
     }
 
+    @Transactional
     @Override
     public Issue newIssue(NewIssueCommand newIssueCommand) {
         Objects.requireNonNull(this.sprintPort.findById(newIssueCommand.getSprintId()),"Sprint bulunamadı");
