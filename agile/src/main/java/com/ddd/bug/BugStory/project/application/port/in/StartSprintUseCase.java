@@ -12,7 +12,7 @@ public class StartSprintUseCase {
         this.sprintPort = sprintPort;
     }
 
-    public void startSprint(int sprintId) throws ActiveSprintException {
+    public Sprint startSprint(int sprintId) throws ActiveSprintException {
         if(sprintId == 0)
             throw new IllegalArgumentException("Sprint ID is mandatory");
 
@@ -25,5 +25,7 @@ public class StartSprintUseCase {
 
         sprint.changeStatus(SprintStatus.STARTED);
         sprintPort.save(sprint);
+
+        return sprint;
     };
 }

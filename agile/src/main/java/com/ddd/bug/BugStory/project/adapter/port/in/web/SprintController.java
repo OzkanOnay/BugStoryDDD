@@ -27,23 +27,18 @@ public class SprintController {
     }
 
     @PostMapping("/reschedule")
-    public void reSchedule(@RequestBody SprintScheduleCommand scheduleCommand) {
-        sprintApplicationService.schedule(scheduleCommand);
+    public Sprint reSchedule(@RequestBody SprintScheduleCommand scheduleCommand) {
+        return sprintApplicationService.schedule(scheduleCommand);
     }
 
-    @GetMapping("/start/{id}")
-    public void startSprint(@PathVariable("id") int sprintId) {
-        try {
-            startSprintUseCase.startSprint(sprintId);
-        } catch (ActiveSprintException e) {
-            //loglayıp
-            //hata fırlat
-        }
+    @PostMapping("/start/{id}")
+    public Sprint startSprint(@PathVariable("id") int sprintId) throws ActiveSprintException {
+        return startSprintUseCase.startSprint(sprintId);
     }
 
     @PostMapping("/close/{id}")
-    public void closeSprint(@RequestBody CloseSprintCommand closeSprintCommand) {
-        closeSprintUseCase.closeSprint(closeSprintCommand);
+    public Sprint closeSprint(@RequestBody CloseSprintCommand closeSprintCommand) {
+        return closeSprintUseCase.closeSprint(closeSprintCommand);
     }
 
 }

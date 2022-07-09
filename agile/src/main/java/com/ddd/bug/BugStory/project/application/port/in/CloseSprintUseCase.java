@@ -16,7 +16,7 @@ public class CloseSprintUseCase {
         this.sprintPort = sprintPort;
     }
 
-    public void closeSprint(CloseSprintCommand closeSprintCommand) {
+    public Sprint closeSprint(CloseSprintCommand closeSprintCommand) {
         Sprint currentSprint = sprintPort.findById(closeSprintCommand.getSprintId());
 
         if(currentSprint == null)
@@ -26,6 +26,7 @@ public class CloseSprintUseCase {
 
         if(closeSprintCommand.getSprintIdToAssignOpenIssues() != 0) {
             Sprint sprintToAssignIssues = sprintPort.findById(closeSprintCommand.getSprintIdToAssignOpenIssues());
+
             sprintToAssignIssues.addIssues(openIssues);
             sprintPort.save(sprintToAssignIssues);
         } else {
@@ -34,5 +35,7 @@ public class CloseSprintUseCase {
 
         currentSprint.changeStatus(SprintStatus.COMPLETED);
         sprintPort.save(currentSprint);
+
+        return currentSprint;
     }
 }

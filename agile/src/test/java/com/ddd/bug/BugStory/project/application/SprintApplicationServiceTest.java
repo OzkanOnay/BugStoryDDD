@@ -92,7 +92,7 @@ public class SprintApplicationServiceTest {
         endCalendar.add(Calendar.DATE, 7);
         Date end = endCalendar.getTime();
 
-        SprintScheduleCommand sprintScheduleCommand = new SprintScheduleCommand(start, end);
+        SprintScheduleCommand sprintScheduleCommand = new SprintScheduleCommand(10, start, end);
         sprintApplicationService.schedule(sprintScheduleCommand);
 
         Sprint sprint = sprintPort.findById(1);

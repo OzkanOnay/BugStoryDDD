@@ -65,11 +65,13 @@ public class SprintApplicationService  {
     }
 
 
-    public void schedule(SprintScheduleCommand scheduleCommand) {
+    public Sprint schedule(SprintScheduleCommand scheduleCommand) {
         Sprint sprint = sprintPort.findById(scheduleCommand.getSprintId());
         sprint.schedule(scheduleCommand.getStart(), scheduleCommand.getEnd());
         //TODO raise event
         sprintPort.save(sprint);
+
+        return sprint;
     }
 
 }

@@ -11,7 +11,7 @@ public interface ProjectMapper {
 
     ProjectMapper INSTANCE = Mappers.getMapper(ProjectMapper.class);
 
-
+    @Mapping(target = "sprints", ignore = true)
     ProjectEntity domainToEntity(Project project);
 
     Project entityToDomain(ProjectEntity projectEntity);
