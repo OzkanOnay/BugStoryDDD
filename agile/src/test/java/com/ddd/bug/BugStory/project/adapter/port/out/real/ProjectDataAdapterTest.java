@@ -7,6 +7,8 @@ import com.ddd.bug.BugStory.project.domain.model.Project;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -21,6 +23,7 @@ public class ProjectDataAdapterTest {
 
 
     @Test
+    @DirtiesContext
     public void testProjectSave() {
 
         Project projectDb = projectDataAdapter.save(Project.builder()

@@ -7,6 +7,7 @@ import com.ddd.bug.BugStory.project.domain.valueObject.SprintStatus;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -21,6 +22,7 @@ public class SprintDataAdapterTest {
 
     @Test
     @Transactional
+    @DirtiesContext
     public void testSave_Find_Delete() {
 
         Sprint sprint = sprintDataAdapter.save(
@@ -47,6 +49,7 @@ public class SprintDataAdapterTest {
 
     @Test
     @Transactional
+    @DirtiesContext
     public void testActiveSprint() {
         Sprint sprint = sprintDataAdapter.save(
                 Sprint
